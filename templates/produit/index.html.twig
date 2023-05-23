@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h2 class="text-info">Produit index</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Qte</th>
+                <th>Img</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.categorie }}</td>
+                    <td>{{ produit.description }}</td>
+                    <td>{{ produit.prix }}</td>
+                    <td>{{ produit.qte }}</td>
+                 <td>
+    
+        <img  src={{produit.img}}  width="50" height="50">
+   
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
+                        <a class="btn btn-warning" href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success"  href="{{ path('app_produit_new') }}">Create new</a>
+    
+{% endblock %}

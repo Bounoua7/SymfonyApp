@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categorie{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+{% block body %}
+    <h2 class="text-info" >Create new Categorie</h2>
+
+    {{ include('categorie/_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('app_categorie_index') }}">back to list</a>
+{% endblock %}

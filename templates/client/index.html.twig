@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-info">Client index</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Mot_de_passe</th>
+                     <th>Adresse</th>
+                   
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.motDePasse }}</td>
+                  
+                <td>{% if client.adresse %}
+    <p>{{ client.adresse.rue }}, {{ client.adresse.codePostal }}, {{ client.adresse.ville }}, {{ client.adresse.pays }}</p>
+{% else %}
+    <p>Aucune adresse disponible pour ce client</p>
+{% endif %}</td>
+                
+                   
+                    <td>
+                        <a href="{{ path('app_client_show', {'id': client.id}) }}" class="btn btn-primary">show</a>
+                        <a href="{{ path('app_client_edit', {'id': client.id}) }}" class="btn btn-warning">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_client_new') }}" class="btn btn-success">Create new</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Produit{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+{% block body %}
+    <h2 class="text-info">Create new Produit </h2>
+     <div class="container">
+         {{ include('produit/_form.html.twig') }}
+    </div>
+
+   
+
+    <a href="{{ path('app_produit_index') }}" class="btn btn-outline-info">back to list</a>
+{% endblock %}

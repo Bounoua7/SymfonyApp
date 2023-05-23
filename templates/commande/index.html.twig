@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h2 class="text-info" >Commande index</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_commande</th>
+                <th>Montant_total</th>
+                <th>Produit</th>
+                <th>client</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande.montantTotal }}</td>
+                <td>
+                 {% for produit in commande.produit %}
+                        {{ produit.nom }}
+                    {% endfor %}
+                </td>
+                  <td>{{ commande.client }}</td>
+                <td>
+                    <a href="{{ path('app_commande_show', {'id': commande.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commande_new') }}" class="btn btn-success">Create new</a>
+{% endblock %}

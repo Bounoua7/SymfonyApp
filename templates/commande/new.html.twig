@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Commande{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+{% block body %}
+    <h2>Create new Commande</h2>
+
+    {{ include('commande/_form.html.twig') }}
+
+    <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">back to list</a>
+{% endblock %}

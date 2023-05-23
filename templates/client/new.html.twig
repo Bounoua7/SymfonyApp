@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Client{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-info">Create new Client</h2>
+{{ include('client/_form.html.twig') }}
+<a href="{{ path('app_client_index') }}" class="btn btn-primary">Back to list</a>
+
+
+    </div>
+{% endblock %}

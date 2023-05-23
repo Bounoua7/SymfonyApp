@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Commande{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+{% endblock %}
+{% block body %}
+    <h2>Edit Commande</h2>
+
+    {{ include('commande/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_commande_index') }}">back to list</a>
+
+    {{ include('commande/_delete_form.html.twig') }}
+{% endblock %}
