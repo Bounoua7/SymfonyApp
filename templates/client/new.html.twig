@@ -3,16 +3,44 @@
 {% block title %}New Client{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
-{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+        }
 
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #333;
+            margin-top: 10px;
+        }
+        .form-txt{
+            background: #f8f8f8;
+                 padding: 50px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%; 
+            max-width: 600px; 
+            box-sizing: border-box; 
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h2 class="text-info">Create new Client</h2>
-{{ include('client/_form.html.twig') }}
-<a href="{{ path('app_client_index') }}" class="btn btn-primary">Back to list</a>
+        <h1>Create new Client</h1>
+    <div class="form-txt">
+        {{ include('client/_form.html.twig') }}
 
-
+        <a href="{{ path('app_client_index') }}" class="back-link"><i class="fas fa-arrow-left"></i> Back to list</a>
+    </div>
     </div>
 {% endblock %}

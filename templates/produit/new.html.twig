@@ -2,15 +2,39 @@
 
 {% block title %}New Produit{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            background-color:rgb(240, 245, 245);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+         .container {
+        padding: 20px;
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%; /* Adjust the width as needed */
+        max-width: 1000px;
+        
+    }
+    </style>
 {% endblock %}
 {% block body %}
-    <h2 class="text-info">Create new Produit </h2>
-     <div class="container">
-         {{ include('produit/_form.html.twig') }}
+    <div class="container">
+        <h1 class="text-center mt-4">Create New Product</h1>
+         <a href="{{ path('app_produit_index') }}" class="btn btn-secondary mt-3">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ include('produit/_form.html.twig') }}
+
+               
+            </div>
+        </div>
     </div>
-
-   
-
-    <a href="{{ path('app_produit_index') }}" class="btn btn-outline-info">back to list</a>
 {% endblock %}

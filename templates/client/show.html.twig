@@ -3,50 +3,82 @@
 {% block title %}Client{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%; /* Adjust the width as needed */
+            max-width: 1000px; /* Adjust the max-width as needed */
+            box-sizing: border-box; /* Add this line */
+        }
+        
+        .form-label {
+            margin-bottom: 20px; /* Adjust the margin-bottom value as needed */
+        }
+        
+        .form-control {
+            width: 100%;
+        }
+        
+        .text-center {
+            margin-top: 20px; /* Adjust the margin-top value as needed */
+        }
+    </style>
 {% endblock %}
 
 
 {% block body %}
-    <div class="container">
-        <h2 class="text-info">Client</h2>
+    <div class="centered-content">
+        <div class="centered-container">
+            <h2 class="text-info">Client</h2>
 
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ client.id }}</td>
-                </tr>
-                <tr>
-                    <th>Nom</th>
-                    <td>{{ client.nom }}</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>{{ client.email }}</td>
-                </tr>
-                <tr>
-                    <th>Mot de passe</th>
-                    <td>{{ client.motDePasse }}</td>
-                </tr>
-                <tr>
-            <th>Adresse</th>
-           <td>{% if client.adresse %}
-    <p>{{ client.adresse.rue }}, {{ client.adresse.codePostal }}, {{ client.adresse.ville }}, {{ client.adresse.pays }}</p>
-{% else %}
-    <p>Aucune adresse disponible pour ce client</p>
-{% endif %}</td>
-</tr>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ client.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ client.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ client.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mot de passe</th>
+                        <td>{{ client.motDePasse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>
+                            {% if client.adresse %}
+                                <p>{{ client.adresse.rue }}, {{ client.adresse.codePostal }}, {{ client.adresse.ville }}, {{ client.adresse.pays }}</p>
+                            {% else %}
+                                <p>Aucune adresse disponible pour ce client</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-             
-                
-            </tbody>
-        </table>
+            <div class="text-center">
+                <a href="{{ path('app_client_index') }}" class="btn btn-primary">Back to list</a>
 
-        <a href="{{ path('app_client_index') }}" class="btn btn-primary">Back to list</a>
+                <a href="{{ path('app_client_edit', {'id': client.id}) }}" class="btn btn-secondary">Edit</a>
 
-        <a href="{{ path('app_client_edit', {'id': client.id}) }}" class="btn btn-secondary">Edit</a>
-
-        {{ include('client/_delete_form.html.twig') }}
+                {{ include('client/_delete_form.html.twig') }}
+            </div>
+        </div>
     </div>
 {% endblock %}

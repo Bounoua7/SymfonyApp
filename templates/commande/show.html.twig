@@ -1,44 +1,89 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Commande{% endblock %}
+
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+            transform: translateX(20px); /* Adjust the value to move the container to the right */
+            box-sizing: border-box;
+        }
+
+        .form-label {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        .text-center {
+            margin-top: 20px;
+        }
+    </style>
 {% endblock %}
+
 {% block body %}
-    <h2>Commande</h2>
+ <div class="text-center">
+        <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to list
+        </a>
+        <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-primary">
+            <i class="bi bi-pencil-fill"></i> Edit
+        </a>
+            {{ include('commande/_delete_form.html.twig') }}
+    </div>
+    <div class="centered-content">
+        <div class="centered-container">
+            <h2>Commande</h2>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ commande.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_commande</th>
-                <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Montant_total</th>
-                <td>{{ commande.montantTotal }}</td>
-            </tr>
-            <tr>
-            <th>Produit</th>
-             <td>
-                 {% for produit in commande.produit %}
-                        {{ produit.nom }}
-                    {% endfor %}
-                </td>
-             <tr>
-              <tr>
-                <th>Client</th>
-                <td>{{ commande.client }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">back to list</a>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ commande.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date_commande</th>
+                            <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Montant_total</th>
+                            <td>{{ commande.montantTotal }}</td>
+                        </tr>
+                        <tr>
+                            <th>Produit</th>
+                            <td>
+                                {% for produit in commande.produit %}
+                                    {{ produit.nom }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Client</th>
+                            <td>{{ commande.client }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-primary">edit</a>
-
-    {{ include('commande/_delete_form.html.twig') }}
+   
 {% endblock %}

@@ -1,13 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Categorie{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        .text-info {
+            text-align: center;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+    </style>
 {% endblock %}
+
 {% block body %}
-    <h2 class="text-info" >Create new Categorie</h2>
 
-    {{ include('categorie/_form.html.twig') }}
+    <div class="centered-content">
+    
+        <div class="centered-container">
+            <h2 class="text-info">Create new Categorie</h2>
 
-    <a class="btn btn-primary" href="{{ path('app_categorie_index') }}">back to list</a>
+            {{ include('categorie/_form.html.twig') }}
+
+            <div class="btn-container">
+                <a class="btn btn-primary" href="{{ path('app_categorie_index') }}"><i class="fas fa-arrow-left"></i>Back to list</a>
+            </div>
+        </div>
+      
+    
+    </div>
 {% endblock %}

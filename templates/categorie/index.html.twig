@@ -4,38 +4,95 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+    <style>
+        .body{
+           background-color: #8fc9c6;
+        }
+        .table-container {
+            text-align: center;
+            color:   #295e59;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .table-container .table {
+           width: 100%;
+            max-width: 1000px;
+            background-color: rgb(240, 245, 245);
+        
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+           
+            box-sizing: border-box;
+        
+        }
+        
+        .table-container .table td,
+        .table-container .table th {
+            font-size: 16px;
+            padding: 10px;
+        }
+        
+        .text-info {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-add {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .btn-add .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
-    <h2 class="text-info">Categorie index</h2>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td>{{ categorie.id }}</td>
-                <td>{{ categorie.nom }}</td>
-                <td>{{ categorie.description }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('app_categorie_show', {'id': categorie.id}) }}">show</a>
-                    <a class="btn btn-warning" href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a class="btn btn-success" href="{{ path('app_categorie_new') }}">Create new</a>
+<div class="body">
+    <div class="table-container">
+        <div class="txt-center">
+            <h2 class="text-info">Categorie index</h2>
+    
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for categorie in categories %}
+                    <tr>
+                        <td>{{ categorie.id }}</td>
+                        <td>{{ categorie.nom }}</td>
+                        <td>{{ categorie.description }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ path('app_categorie_show', {'id': categorie.id}) }}"><i class="fas fa-eye"></i>show</a>
+                            <a class="btn btn-info" href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"><i class="fas fa-edit"></i>edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+             <div class="btn-add">
+        <a class="btn btn-success" href="{{ path('app_categorie_new') }}"><i class="fas fa-plus"></i>Create new</a>
+    </div>
+        </div>
+    </div>
+    
+ </div>  
 {% endblock %}

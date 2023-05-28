@@ -1,28 +1,52 @@
-{{ form_start(form) }}
-    <div class="form-group">
-        {{ form_label(form.nom) }}
-        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+   <style>
+
+    .centered-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .centered-container {
+        padding: 20px;
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%; /* Adjust the width as needed */
+        max-width: 800px;
+        
+    }
+    
+    .form-label {
+        margin-bottom: 10px; /* Adjust the margin-bottom value as needed */
+    }
+    
+    .form-control {
+        width: 100%;
+    }
+    
+    .text-center {
+        margin-top: 20px; /* Adjust the margin-top value as needed */
+    }
+</style>
+<endblock>
+<div class="centered-content">
+    <div class="centered-container">
+        {{ form_start(form) }}
+        {% for child in form %}
+            <div class="mb-3">
+                {{ form_label(child) }}
+                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        {% endfor %}
+        <div class="text-center">
+            <button class="btn btn-primary">
+                <i class="fas fa-save"></i> {{ button_label|default('Save') }}
+            </button>
+        </div>
+        {{ form_end(form) }}
     </div>
-    <div class="form-group">
-        {{ form_label(form.description) }}
-        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.categorie) }}
-        {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.prix) }}
-        {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.qte) }}
-        {{ form_widget(form.qte, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.img) }}
-        {{ form_widget(form.img, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <br>
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+</div>

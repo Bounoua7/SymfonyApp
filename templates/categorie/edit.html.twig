@@ -4,14 +4,56 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        .form-label {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+        .btn-btns{
+            text-align: center;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-info">Edit Categorie</h1>
 
-    {{ include('categorie/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="centered-content">
+    
+        <div class="centered-container">
+            <h2>Edit Categorie</h2>
+           
+            {{ include('categorie/_form.html.twig', {'button_label': 'Update'}) }} <br>
+            
+            <div class="btn-btns">
+             <a href="{{ path('app_categorie_index') }}" class="btn btn-warning">
+                <i class="fas fa-arrow-left"></i> Back to list
+            </a>
+            <br>
+                        <br>
 
-    <a class="btn btn-primary" href="{{ path('app_categorie_index') }}">back to list</a>
-
-    {{ include('categorie/_delete_form.html.twig') }}
+            {{ include('categorie/_delete_form.html.twig') }} </div>
+        </div>
+      
+    
+    </div>
 {% endblock %}

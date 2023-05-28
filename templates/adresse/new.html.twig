@@ -1,15 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Adresse{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        .text-info {
+            text-align: center;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+    </style>
 {% endblock %}
+
 {% block body %}
-    <h2 class="text-info">Create new Adresse</h2>
 
-    <div class="container">
-        {{ include('adresse/_form.html.twig') }}
+    <div class="centered-content">
+    
+        <div class="centered-container">
+            <h2 class="text-info">Create new Adresse</h2>
+
+            <div class="container">
+                {{ include('adresse/_form.html.twig') }}
+            </div>
+
+            <div class="btn-container">
+                <a href="{{ path('app_adresse_index') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to list
+                </a>
+            </div>
+        </div>
+      
+    
     </div>
-
-    <a href="{{ path('app_adresse_index') }}" class="btn btn-primary">Back to list</a>
 {% endblock %}

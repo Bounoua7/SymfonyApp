@@ -1,0 +1,49 @@
+/* styles.css */
+
+/* Table styles */
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #32a390;
+    font-weight: bold;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Link styles */
+  a {
+    color: #31726d;
+    text-decoration: none;
+    margin-right: 8px;
+    text-align: center;
+    
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Create new link style */
+  .create-new-link {
+    display: block;
+    margin-top: 16px;
+    font-weight: bold;
+  }
+  

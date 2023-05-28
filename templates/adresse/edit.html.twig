@@ -4,13 +4,53 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
-{% endblock %}
-{% block body %}
-    <h2 class="text-info">Edit Adresse</h2>
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
-<br>
-    <a class="btn btn-outline-info" href="{{ path('app_adresse_index') }}">back to list</a>
-<br><br>
-    {{ include('adresse/_delete_form.html.twig') }}
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        .text-info {
+            text-align: center;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="centered-content">
+    
+        <div class="centered-container">
+            <h2 class="text-info">Edit Adresse</h2>
+
+            {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
+            <br>
+            {{ include('adresse/_delete_form.html.twig') }}
+
+            <div class="btn-container">
+                <a class="btn btn-outline-info" href="{{ path('app_adresse_index') }}">
+                    <i class="fas fa-arrow-left"></i> Back to list
+                </a>
+            </div>
+            
+        </div>
+      
+    
+    </div>
 {% endblock %}

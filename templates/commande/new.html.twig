@@ -1,13 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Commande{% endblock %}
+
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .centered-container {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        .form-label {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+    </style>
 {% endblock %}
+
 {% block body %}
-    <h2>Create new Commande</h2>
+    <div class="centered-content">
+        <div class="centered-container">
+            <h2>Create new Commande</h2>
+          
 
-    {{ include('commande/_form.html.twig') }}
-
-    <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">back to list</a>
+            {{ include('commande/_form.html.twig') }} 
+            <br>
+              <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to list
+            </a>
+        </div>
+    </div>
 {% endblock %}

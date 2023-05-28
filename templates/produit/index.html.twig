@@ -1,53 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit index{% endblock %}
-
+{% block title %}Produit {% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('./css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            background-color:rgb(240, 245, 245);
+            /*background-image: url('https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80');*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+         .center {
+        text-align: center;
+        color: #295e59;
+    }
+    </style>
 {% endblock %}
 
 {% block body %}
-    <h2 class="text-info">Produit index</h2>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Catégorie</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Qte</th>
-                <th>Img</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+   
+    <div class="container" >
+        <div>
+           <h1 class='center'>Table des produits</h1>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Qte</th>
+                    <th>Img</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for produit in produits %}
                 <tr>
                     <td>{{ produit.id }}</td>
                     <td>{{ produit.nom }}</td>
-                    <td>{{ produit.categorie }}</td>
                     <td>{{ produit.description }}</td>
                     <td>{{ produit.prix }}</td>
                     <td>{{ produit.qte }}</td>
-                 <td>
-    
-        <img  src={{produit.img}}  width="50" height="50">
-   
+                    <td><img src={{ produit.img }} width='100px' height='100px'></td>
                     <td>
-                        <a class="btn btn-primary" href="{{ path('app_produit_show', {'id': produit.id}) }}">show</a>
-                        <a class="btn btn-warning" href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+                       <a href="{{ path('app_produit_show', {'id': produit.id}) }}" class="btn btn-primary"> <i class="fas fa-eye"></i> Show </a>
+                       <a href="{{ path('app_produit_edit', {'id': produit.id}) }}"class="btn btn-secondary"> <i class="fas fa-edit"></i> Edit </a>
                     </td>
+
                 </tr>
             {% else %}
                 <tr>
                     <td colspan="7">no records found</td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a class="btn btn-success"  href="{{ path('app_produit_new') }}">Create new</a>
-    
+        
+        <a href="{{ path('app_produit_new') }}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Create new
+        </a>
+    </div>
 {% endblock %}
